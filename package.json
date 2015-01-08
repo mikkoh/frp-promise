@@ -1,0 +1,28 @@
+{
+  "name": "frp-promise",
+  "version": "1.0.0",
+  "description": "will convert a Promise to a frp event",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Mikko Haapoja",
+    "email": "me@mikkoh.com",
+    "url": "https://github.com/mikkoh"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "frp,promise"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikkoh/frp-promise.git"
+  },
+  "homepage": "https://github.com/mikkoh/frp-promise",
+  "bugs": {
+    "url": "https://github.com/mikkoh/frp-promise/issues"
+  }
+}
