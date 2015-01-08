@@ -12,5 +12,5 @@ module.exports = function( promise ) {
 		pipe.fire( new Error( reason ) );
 	});
 
-	return pipe;
+	return pipe.event;
 };
