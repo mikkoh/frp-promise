@@ -1,28 +1,34 @@
-var tape = require( 'tape' );
+var test = require( 'tape' );
 var frpPromise = require( './..' );
 var promise = require( 'bluebird' );
 
-var resolved = promise.resolve( 'got it' );
-var rejected = promise.reject( 'nope dont got it' );
-var later = new promise( function( resolve, reject ) {
 
-	setTimeout( resolve.bind( null, 'got it later' ), 1000 );
-});
+test( 'test creating frp Event\'s out of promises', function( t ) {
 
-frpPromise( resolved )
-.watch( function( value ) {
+	t.plan( 3 );
 
-	console.log( value );
-});
+	var resolved = promise.resolve( 'got it' );
+	var rejected = promise.reject( 'nope dont got it' );
+	var later = new promise( function( resolve, reject ) {
 
-frpPromise( rejected )
-.watch( function( value ) {
+		setTimeout( resolve.bind( null, 'got it later' ), 1000 );
+	});
 
-	console.log( value );
-});
+	frpPromise( resolved )
+	.watch( function( value ) {
 
-frpPromise( later )
-.watch( function( value ) {
+		t.equal( value, 'got it', 'received from resolving promise' );
+	});
 
-	console.log( value );
+	frpPromise( rejected )
+	.watch( function( value ) {
+
+		t.equal( value.message, 'nope dont got it', 'received error from rejecting promise' );
+	});
+
+	frpPromise( later )
+	.watch( function( value ) {
+
+		t.equal( value, 'got it later', 'received from async resolving promise' );
+	});
 });
