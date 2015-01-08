@@ -9,8 +9,14 @@
     "email": "me@mikkoh.com",
     "url": "https://github.com/mikkoh"
   },
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "frp": "^0.2.4",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "bluebird": "^2.6.2",
+    "tape": "^3.0.3"
+  },
   "scripts": {
     "test": "node test.js"
   },
