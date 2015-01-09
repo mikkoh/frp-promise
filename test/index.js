@@ -5,7 +5,7 @@ var promise = require( 'bluebird' );
 
 test( 'test creating frp Event\'s out of promises', function( t ) {
 
-	t.plan( 3 );
+	t.plan( 4 );
 
 	var resolved = promise.resolve( 'got it' );
 	var rejected = promise.reject( 'nope dont got it' );
@@ -23,7 +23,8 @@ test( 'test creating frp Event\'s out of promises', function( t ) {
 	frpPromise( rejected )
 	.watch( function( value ) {
 
-		t.equal( value.message, 'nope dont got it', 'received error from rejecting promise' );
+		t.ok( value instanceof Error, 'received an error from rejecting promise' );
+		t.equal( value.message, 'nope dont got it', 'error message is the message sent from reject' );
 	});
 
 	frpPromise( later )
